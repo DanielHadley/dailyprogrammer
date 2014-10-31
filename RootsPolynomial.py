@@ -47,19 +47,24 @@ import re
 
 Input = 'x^4-2x^3+7x^2-16x+4'
 
-def TurnInputToFunction(Input):
+def TurnInputToFunction(Input, Inputx):
     function = Input.replace('^', '**').replace('x', '*x')
     if function.startswith('*'):
         function = function[1:]
+    x = Inputx
     return eval(function)
 
 
 # http://stackoverflow.com/questions/16650680/given-f-is-there-an-automatic-way-to-calculate-fprime-for-newtons-method
 # taken from http://stackoverflow.com/questions/11155367/finding-the-derivative-of-a-polynomial
 
+def secant(x1, x2, sims, Input):
+	y1 = TurnInputToFunction(Input, x1)
+	y2 = TurnInputToFunction(Input, x2)
+	for i in range(0,sims):
+		answer == x2-y2 * (x2-x1)/(yx-y1)
 
+f = TurnInputToFunction(Input, 3) 
+print f
 
-def NewtonRaphson():
-    xZero = 1 
-    f = TurnInputToFunction(Input)
 
