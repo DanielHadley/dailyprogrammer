@@ -41,30 +41,34 @@
 # 2 or 0.2825..
 # 1 or 6
 # Extension (Hard)
-# You've found one root of the polynomial - now modify your solution to find all of the roots. This will require a divide-and-conquer algorithm of some sort.
 """Roots of a polynomial"""
 import re
+import sys
 
 Input = 'x^4-2x^3+7x^2-16x+4'
 
-def TurnInputToFunction(Input, Inputx):
+# Turn the string into a function that Python can evaluate
+def TurnInputToFunction(Input):
     function = Input.replace('^', '**').replace('x', '*x')
     if function.startswith('*'):
         function = function[1:]
-    x = Inputx
-    return eval(function)
+    return function
+
+def f(x):
+    x = x
+    return eval(TurnInputToFunction(Input))
 
 
-# http://stackoverflow.com/questions/16650680/given-f-is-there-an-automatic-way-to-calculate-fprime-for-newtons-method
-# taken from http://stackoverflow.com/questions/11155367/finding-the-derivative-of-a-polynomial
+def secant(x0,x1,sims):
+    for i in range(sims):
+        if f(x1)-f(x0) == 0:
+            return x1
+        x_temp = x1 - (f(x1)*(x1-x0)*1.0)/(f(x1)-f(x0))
+        x0 = x1
+        x1 = x_temp
+    return x1
+    
 
-def secant(x1, x2, sims, Input):
-	y1 = TurnInputToFunction(Input, x1)
-	y2 = TurnInputToFunction(Input, x2)
-	for i in range(0,sims):
-		answer == x2-y2 * (x2-x1)/(yx-y1)
-
-f = TurnInputToFunction(Input, 3) 
-print f
+print secant(10, 30, 20)
 
 
