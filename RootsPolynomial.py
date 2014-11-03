@@ -60,15 +60,20 @@ def f(x):
 
 
 def secant(x0,x1,sims):
+    epsilon = .000001
     for i in range(sims):
         if f(x1)-f(x0) == 0:
             return x1
         x_temp = x1 - (f(x1)*(x1-x0)*1.0)/(f(x1)-f(x0))
         x0 = x1
         x1 = x_temp
-    return x1
+    tolerance = f(x1)-f(x0)
+    answer = x1
+    if abs(tolerance) < epsilon:
+        return answer
+    return "no answer: try new x0/x1"
     
 
-print secant(10, 30, 20)
+print secant(20, 30, 20)
 
 
