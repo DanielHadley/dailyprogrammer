@@ -26,4 +26,7 @@ def get_distribution(n_sims):
 a = np.array(get_distribution(10000))
 p = np.percentile(a, 99)
 
+# The mean is closest to the coupon collector's problem
+m = np.mean(a)
+
 print(p)
