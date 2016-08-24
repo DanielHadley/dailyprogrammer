@@ -24,6 +24,6 @@ def get_distribution(n_sims):
 
 
 a = np.array(get_distribution(10000))
-p = np.percentile(a, 50)
+p = np.percentile(a, 99)
 
 print(p)
